@@ -59,7 +59,32 @@ int main()
             	//A LISTA JA CONTEM ELEMENTOS
             	//E O NOVO ELEMENTO
             	//SERA INSERIDO NO INICIO DA LISTA
-                //-----------------ADICIONAR DADOS AQUI
+            	//RESPEITANDO A ORDENAçãO CRESCENTE
+            	aux = inicio;
+            	while (aux != NULL && novo -> num > aux->num){
+                    aux = aux->prox;
+            	}
+            	if(aux == inicio){
+                    //O NOVO NUMERO SERA INSERIDO
+                    //E MENOR QUE TODOS OS NUMEROS DA LISTA
+                    // LOGO SERA INCERIDO NO INICIO
+                    novo->prox = inicio;
+                    novo->ant = NULL;
+                    inicio->ant = novo;
+                    inicio = novo;
+            	}else if(aux == NULL){
+                    //O NUMERO A SER INSERIDO É MAIOR QUE TODOS OS NUMEROS
+                    fim->prox = novo;
+                    novo->ant = fim;
+                    novo->prox = NULL;
+                    fim = novo;
+            	}else{
+                    // NOVO NUMERO INSERIDO ENTRE DOIS NUMEROS
+                    novo->prox = aux;
+                    aux->ant->prox = novo;
+                    novo->ant = aux->ant;
+                    aux->ant = novo;
+            	}
             }
             cout<<"Numero inserido no inicio da lista!";
         }
@@ -75,11 +100,11 @@ int main()
             	//MOSTRADOS DO INICIO AO FIM
                 cout<<"\nConsultando a lista do inicio ao fim\n";
                 aux = inicio;
-                do
+                while (aux != NULL);
                 {
                     cout<<aux->num<<" ";
                     aux = aux-> prox;
-                }while (aux != inicio);
+                }
             }
         }
 
@@ -94,11 +119,11 @@ int main()
             	//MOSTRADOS O FIM AO INICIO
                 cout<<"\nConsultando a lista do fim ao início\n";
                 aux = fim;
-                do
+                while (aux != NULL){
                 {
                     cout<<aux->num<<" ";
                     aux = aux->ant;
-                } while (aux != fim);
+                }
             }
         }
 
