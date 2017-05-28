@@ -39,7 +39,7 @@ int main()
         cout<<"\n6 - Sair";
         cout<<"\nDigite sua opcao: ";
         cin>>op;
-        if(op < 1 || op > 7 ){
+        if(op < 1 || op > 6 ){
             cout<<"Opcao invalida! ";
         }
         if (op == 1){
@@ -76,8 +76,8 @@ int main()
                     //O NUMERO A SER INSERIDO É MAIOR QUE TODOS OS NUMEROS
                     fim->prox = novo;
                     novo->ant = fim;
-                    novo->prox = NULL;
                     fim = novo;
+                    fim->prox = NULL;
             	}else{
             	    cout<<"mais um ";
                     // NOVO NUMERO INSERIDO ENTRE DOIS NUMEROS
@@ -101,8 +101,7 @@ int main()
             	//MOSTRADOS DO INICIO AO FIM
                 cout<<"\nConsultando a lista do inicio ao fim\n";
                 aux = inicio;
-                while (aux != NULL);
-                {
+                while (aux != NULL){
                     cout<<aux->num<<" ";
                     aux = aux->prox;
                 }
@@ -121,14 +120,13 @@ int main()
                 cout<<"\nConsultando a lista do fim ao início\n";
                 aux = fim;
                 while (aux != NULL){
-                {
                     cout<<aux->num<<" ";
                     aux = aux->ant;
                 }
             }
         }
 
-        if (op ==5){
+        if (op ==4){
             if (inicio == NULL){
             	//A LISTA ESTA VAZIA
                 cout<<"Lista vazia!";
@@ -209,7 +207,7 @@ int main()
                     cout<<"Numero removido "<<achou<<" vezes";
             }
         }
-        if (op == 6){
+        if (op == 5){
             if (inicio == NULL){
                 //A LISTA ESTA VAZIA
                 cout<<"Lista vazia!";
