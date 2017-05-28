@@ -6,8 +6,8 @@ using namespace std;
 
 int main()
 {
-    //Definindo o registro
-    //que representara cada elemento da lista
+    //DEFINIDO O REQUISITO QUE REPRESENTARA
+    //CADA ELEMENTO DA LISTA
     struct LISTA
     {
         int num;
@@ -15,29 +15,28 @@ int main()
         LISTA *ant;
     };
 
-    //A lista esta vazia, logo,
-    //o ponteiro inicio tem o valor NULL
-    //o ponteiro inicio contera o endereco
-    //do primeiro elemento da lista
+    //A LISTA ESTA VAZIA, LOGO,
+    //O PONTEIRO INICIO TEM O VALOR NULL
+    //O PONTEIRO INICIO CONTERA O ENDERECO
+    //DO PRIMEIRO ELEMENTO DA LISTA
     LISTA *inicio = NULL;
-    //o primeiro fim contera o endereco
-    //do ultimo elemento da lista
+    //O PONTEIRO FIM CONTERA O ENDERECO
+    //DO ULTIMO ELEMENTO DA LISTA
     LISTA *fim = NULL;
-    //o ponteiro aux e o ponteiro auxiliar
+    //O PONTEIRO AUX E O PONTEIRO AUXILIAR
     LISTA *aux;
-    //apresentando o menu de opcao
+    //APRESENTANDO O MENU DE OPCAO
     int op, numero, achou;
     do
     {
         system("CLS");
         cout<<"\nMENU DE OPCOES\n";
-        cout<<"\n1 - Inserir no inicio da lista";
-        cout<<"\n2 - Inserir no fim da lista";
-        cout<<"\n3 - Consultar a lista do inicio ao fim";
-        cout<<"\n4 - Consultar a lista do fim ao inicio";
-        cout<<"\n5 - Remover da lista";
-        cout<<"\n6 - Esvaziar a lista";
-        cout<<"\n7 - Sair";
+        cout<<"\n1 - Inserir na lista";
+        cout<<"\n2 - Consultar a lista do inicio ao fim";
+        cout<<"\n3 - Consultar a lista do fim ao inicio";
+        cout<<"\n4 - Remover da lista";
+        cout<<"\n5 - Esvaziar a lista";
+        cout<<"\n6 - Sair";
         cout<<"\nDigite sua opcao: ";
         cin>>op;
         if(op < 1 || op > 7 ){
@@ -48,62 +47,32 @@ int main()
             LISTA *novo = new LISTA();
             cin>>novo->num;
             if (inicio == NULL){
-                //a lista estaca vazia
-                //e o elemento inserido sera
-                //o primeiro e o ultimo
-                inicio = novo;
-                fim = novo;
+                //A LISTA ESTACA VAZIA
+                //E O ELEMENTO INSERIDO SERA
+                //O PRIMEIRO E O ULTIMO
                 novo->prox = inicio;
                 novo->ant = inicio;
+                inicio = novo;
+                fim = novo;
             }
             else{
-            	//a lista ja contem elementos
-            	//e o novo elemento
-            	//sera inserido no inicio da lista
-                novo->prox = inicio;
-                inicio->ant = novo;
-                novo->ant = fim;
-                fim->prox = novo;
-                inicio = novo;
+            	//A LISTA JA CONTEM ELEMENTOS
+            	//E O NOVO ELEMENTO
+            	//SERA INSERIDO NO INICIO DA LISTA
+                //-----------------ADICIONAR DADOS AQUI
             }
             cout<<"Numero inserido no inicio da lista!";
         }
 
         if (op == 2){
-            cout<<"Digite o numero a ser inserido no fim da lista: ";
-            LISTA *novo = new LISTA();
-            cin>>novo->num;
             if (inicio == NULL){
-                //a lista esta vazia
-                //e o elemento inserido sera
-                //o primeiro e o ultimo
-                inicio = novo;
-                fim = novo;
-              	novo->prox = inicio;
-                novo->ant = inicio;
-            }
-            else{
-            	//a lista ja contem elementos e o
-            	//novo elemento
-            	//sera inseridono fim da lista
-                fim->prox = novo;
-                novo->ant = fim;
-                fim = novo;
-                fim-> prox = inicio;
-                inicio->ant = fim;
-            }
-            cout<<"Numero inserido no fim da lista!";
-        }
-
-        if (op == 3){
-            if (inicio == NULL){
-            	//a lista esta vazia
+            	//A LISTA ESTA VAZIA
                 cout<<"Lista vazia!";
             }
             else{
-            	//a lista contem elementos e estes
-            	//serao
-            	//mostrados do inicio ao fim
+            	//A LISTA CONTEM ELEMENTOS E ESTES
+            	//SERAO
+            	//MOSTRADOS DO INICIO AO FIM
                 cout<<"\nConsultando a lista do inicio ao fim\n";
                 aux = inicio;
                 do
@@ -111,19 +80,18 @@ int main()
                     cout<<aux->num<<" ";
                     aux = aux-> prox;
                 }while (aux != inicio);
-
             }
         }
 
-        if (op == 4){
+        if (op == 3){
             if (inicio = NULL){
-            	//a lista esta vazia
+            	//A LISTA ESTA VAZIA
                 cout<<"Lista vazia!";
             }
             else{
-            	//a lista contem elementos
-            	//e estes serao
-            	//mostrados o fim ao inicio
+            	//A LISTA CONTEM ELEMENTOS
+            	//E ESTES SERAO
+            	//MOSTRADOS O FIM AO INICIO
                 cout<<"\nConsultando a lista do fim ao início\n";
                 aux = fim;
                 do
@@ -136,22 +104,22 @@ int main()
 
         if (op ==5){
             if (inicio == NULL){
-            	//a lista esta vazia
+            	//A LISTA ESTA VAZIA
                 cout<<"Lista vazia!";
             }
             else{
-            	//a lista contem elementos
-            	//e o elemento a set
-            	//removido deve ser digitado
+            	//A LISTA CONTEM ELEMENTOS
+            	//E O ELEMENTO A SET
+            	//REMOVIDO DEVE SER DIGITADO
                 cout<<"\nDigite o elemento a ser removido:";
                 cin>>numero;
-                //todas as ocorrencias da lista
-                //iguais ao numeros digitado
-                //seram removidos
+                //TODAS AS OCORRENCIAS DA LISTA
+                //IGUAIS AO NUMEROS DIGITADO
+                //SERAM REMOVIDOS
                 aux = inicio;
                 achou = 0;
-                //descobrindo a quantidade de
-                //elementos da lista
+                //DESCOBRINDO A QUANTIDADE DE
+                //ELEMENTOS DA LISTA
                 int quantidade = 0;
                 aux = inicio;
                 do{
@@ -161,7 +129,7 @@ int main()
                 int elemento =1;
                 do
                 {
-                	//se a lista possui apenas um elemento
+                	//SE A LISTA POSSUI APENAS UM ELEMENTO
                     if (inicio == fim && inicio->num == numero){
                         inicio = NULL;
                         delete(inicio);
@@ -169,13 +137,13 @@ int main()
                     }
                     else{
                         if (aux->num == numero){
-                        	//o numero digitado
-                        	//foi encontrado na lista
-                        	//e sera removido
+                        	//O NUMERO DIGITADO
+                        	//FOI ENCONTRADO NA LISTA
+                        	//E SERA REMOVIDO
                             achou = achou +1;
                             if (aux == inicio){
-                            	//o numero a ser removido
-                            	//e o primeiro da lista
+                            	//O NUMERO A SER REMOVIDO
+                            	//E O PRIMEIRO DA LISTA
                                 inicio = aux->prox;
                                 inicio->ant = fim;
                                 fim->prox = inicio;
@@ -183,9 +151,9 @@ int main()
                                 aux = inicio;
                             }
                             else if (aux == fim){
-                            	//o numero a ser
-                            	//removido
-                            	//e o ultimo da lista
+                            	//O NUMERO A SER
+                            	//REMOVIDO
+                            	//E O ULTIMO DA LISTA
                                 fim = fim->ant;
                                 fim->prox = inicio;
                                 inicio->ant = fim;
@@ -217,11 +185,11 @@ int main()
         }
         if (op == 6){
             if (inicio == NULL){
-                //a lista esta vazia
+                //A LISTA ESTA VAZIA
                 cout<<"Lista vazia!";
             }
             else{
-                //a lista sera esvaziada
+                //A LISTA SERA ESVAZIADA
                 aux = inicio;
                 do
                 {
