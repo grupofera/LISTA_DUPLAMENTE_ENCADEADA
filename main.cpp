@@ -126,7 +126,7 @@ int main()
             }
         }
 
-        if (op ==4){
+        if (op == 4){
             if (inicio == NULL){
             	//A LISTA ESTA VAZIA
                 cout<<"Lista vazia!";
@@ -142,63 +142,45 @@ int main()
                 //SERAM REMOVIDOS
                 aux = inicio;
                 achou = 0;
-                //DESCOBRINDO A QUANTIDADE DE
-                //ELEMENTOS DA LISTA
-                int quantidade = 0;
-                aux = inicio;
-                do{
-                    quantidade = quantidade +1;
-                    aux = aux->prox;
-                } while (aux != inicio);
-                int elemento =1;
-                do
+                while (aux != NULL)
                 {
-                	//SE A LISTA POSSUI APENAS UM ELEMENTO
-                    if (inicio == fim && inicio->num == numero){
-                        inicio = NULL;
-                        delete(inicio);
+                	if (aux->num == numero){
+                        //O NUMERO DIGITADO
+                        //FOI ENCONTRADO NA LISTA
+                        //E SERA REMOVIDO
                         achou = achou +1;
-                    }
-                    else{
-                        if (aux->num == numero){
-                        	//O NUMERO DIGITADO
-                        	//FOI ENCONTRADO NA LISTA
-                        	//E SERA REMOVIDO
-                            achou = achou +1;
-                            if (aux == inicio){
-                            	//O NUMERO A SER REMOVIDO
-                            	//E O PRIMEIRO DA LISTA
-                                inicio = aux->prox;
-                                inicio->ant = fim;
-                                fim->prox = inicio;
-                                delete(aux);
-                                aux = inicio;
+                        if (aux == inicio){
+                            //O NUMERO A SER REMOVIDO
+                            //E O PRIMEIRO DA LISTA
+                            inicio = aux->prox;
+                            if(inicio != NULL){
+                                inicio->ant = NULL;
                             }
-                            else if (aux == fim){
-                            	//O NUMERO A SER
-                            	//REMOVIDO
-                            	//E O ULTIMO DA LISTA
-                                fim = fim->ant;
-                                fim->prox = inicio;
-                                inicio->ant = fim;
-                                delete(aux);
-                                aux = NULL;
-                            }
-                            else{
-                                aux->ant->prox = aux->prox;
-                                aux->prox->ant = aux->ant;
-                                LISTA *aux2;
-                                aux2 = aux;
-                                aux = aux->prox;
-                                delete(aux2);
-                            }
+                            delete(aux);
+                            aux = inicio;
+                        }
+                        else if (aux == fim){
+                            //O NUMERO A SER
+                            //REMOVIDO
+                            //E O ULTIMO DA LISTA
+                            fim = fim->ant;
+                            fim->prox = NULL;
+                            delete(aux);
+                            aux = NULL;
                         }
                         else{
-                            aux = aux->prox;
+                            aux->ant->prox = aux->prox;
+                            aux->prox->ant = aux->ant;
+                            LISTA *aux2;
+                            aux2 = aux->prox;
+                            delete(aux);
+                            aux = aux2;
                         }
                     }
-                    elemento = elemento +1;
-                } while (elemento <= quantidade);
+                    else{
+                        aux = aux->prox;
+                    }
+                }
                 if (achou == 0)
                     cout<<"Numero não encontrado";
                 else if (achou ==1)
@@ -215,14 +197,12 @@ int main()
             else{
                 //A LISTA SERA ESVAZIADA
                 aux = inicio;
-                do
+                while (aux != NULL)
                 {
                     inicio = inicio->prox;
                     delete(aux);
                     aux = inicio;
-                } while (aux != fim);
-                delete(aux);
-                inicio = NULL;
+                }
                 cout<<"Lista esvaziada";
             }
         }
