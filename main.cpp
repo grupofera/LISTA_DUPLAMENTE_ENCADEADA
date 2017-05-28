@@ -50,8 +50,8 @@ int main()
                 //A LISTA ESTACA VAZIA
                 //E O ELEMENTO INSERIDO SERA
                 //O PRIMEIRO E O ULTIMO
-                novo->prox = inicio;
-                novo->ant = inicio;
+                novo->prox = NULL;
+                novo->ant = NULL;
                 inicio = novo;
                 fim = novo;
             }
@@ -61,7 +61,7 @@ int main()
             	//SERA INSERIDO NO INICIO DA LISTA
             	//RESPEITANDO A ORDENAçãO CRESCENTE
             	aux = inicio;
-            	while (aux != NULL && novo -> num > aux->num){
+            	while (aux != NULL && novo->num > aux->num){
                     aux = aux->prox;
             	}
             	if(aux == inicio){
@@ -79,6 +79,7 @@ int main()
                     novo->prox = NULL;
                     fim = novo;
             	}else{
+            	    cout<<"mais um ";
                     // NOVO NUMERO INSERIDO ENTRE DOIS NUMEROS
                     novo->prox = aux;
                     aux->ant->prox = novo;
@@ -103,7 +104,7 @@ int main()
                 while (aux != NULL);
                 {
                     cout<<aux->num<<" ";
-                    aux = aux-> prox;
+                    aux = aux->prox;
                 }
             }
         }
